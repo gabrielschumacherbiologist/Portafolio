@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio Docente — Gabriel Schumacher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-deep:    #080C18;
+    --bg-mid:     #0D1225;
+    --bg-card:    #111827;
+    --bg-card2:   #141C2E;
+    --teal:       #00C9B1;
+    --teal-dim:   #00876F;
+    --violet:     #7C3AED;
+    --violet-dim: #5B21B6;
+    --text-main:  #E8EDF5;
+    --text-sub:   #94A3B8;
+    --text-dim:   #4A5568;
+    --border:     rgba(0,201,177,0.12);
+    --border-v:   rgba(124,58,237,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 6vw 80px;
+    background: linear-gradient(160deg, #0A0E1A 0%, #0D1225 60%, #0F1628 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--teal);
+  }
+
+  .hero-name {
+    font-family: 'Calibri', 'Arial', 'Helvetica Neue', sans-serif;
+    font-size: clamp(44px, 7.5vw, 88px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .hero-name .name-first {
+    display: block;
+    color: var(--text-main);
+  }
+  .hero-name .name-last {
+    display: block;
+    color: var(--teal);
+  }
+
+  .hero-degree {
+    font-family: 'Calibri', 'Arial', 'Helvetica Neue', sans-serif;
+    font-size: clamp(15px, 2vw, 20px);
+    font-weight: 400;
+    color: var(--text-sub);
+    margin-bottom: 36px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-tagline {
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: var(--text-sub);
+    max-width: 520px;
+    border-left: 2px solid var(--teal);
+    padding-left: 20px;
+    line-height: 1.6;
+  }
+
+  .hero-contact {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .contact-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-sub);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 7px 16px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-pill:hover { border-color: var(--teal); color: var(--teal); }
+  .contact-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+  .year-badge {
+    position: absolute;
+    top: 40px; right: 6vw;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--text-dim);
+    z-index: 2;
+  }
+
+  /* ─── FADE DIVIDER ──────────────────────── */
+  .fade-divider {
+    height: 120px;
+    background: linear-gradient(to bottom, var(--bg-deep), var(--bg-mid));
+  }
+
+  /* ─── MAIN CONTENT ──────────────────────── */
+  main { background: var(--bg-mid); }
+
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 6vw;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Calibri', 'Arial', 'Helvetica Neue', sans-serif;
+    font-size: clamp(24px, 3.2vw, 36px);
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  /* ─── VALOR DIFERENCIAL ─────────────────── */
+  .valor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .valor-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .valor-card:hover { border-color: var(--teal-dim); transform: translateY(-3px); }
+
+  .valor-icon {
+    width: 40px; height: 40px;
+    background: rgba(0,201,177,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+
+  .valor-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+  }
+  .valor-card p {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+
+  /* ─── NIVELES SISTÉMICOS ────────────────── */
+  .levels-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .level-chip {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid;
+  }
+  .level-chip.mol { border-color: #00C9B1; color: #00C9B1; background: rgba(0,201,177,0.08); }
+  .level-chip.cel { border-color: #06B6D4; color: #06B6D4; background: rgba(6,182,212,0.08); }
+  .level-chip.org { border-color: #818CF8; color: #818CF8; background: rgba(129,140,248,0.08); }
+  .level-chip.cli { border-color: #A78BFA; color: #A78BFA; background: rgba(167,139,250,0.08); }
+  .level-chip.pob { border-color: #7C3AED; color: #C4B5FD; background: rgba(124,58,237,0.12); }
+
+  /* ─── COLABORACIÓN ──────────────────────── */
+  .colab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .colab-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .colab-card:hover { border-color: rgba(124,58,237,0.4); }
+
+  .colab-header {
+    padding: 22px 26px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .colab-letter {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--violet-dim), var(--violet));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .colab-header-text h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+  .colab-header-text span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .colab-body { padding: 20px 26px 24px; }
+
+  .colab-topics {
+    list-style: none;
+    margin-bottom: 18px;
+  }
+  .colab-topics li {
+    font-size: 13px;
+    color: var(--text-sub);
+    padding: 4px 0 4px 16px;
+    position: relative;
+  }
+  .colab-topics li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 11px;
+    top: 5px;
+  }
+
+  .colab-systemic {
+    background: rgba(0,201,177,0.06);
+    border: 1px solid rgba(0,201,177,0.15);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--teal);
+    font-style: italic;
+  }
+
+  /* ─── METODOLOGÍA ───────────────────────── */
+  .method-section { background: var(--bg-deep); }
+
+  .method-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .method-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+    background: var(--bg-card2);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  .method-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .method-item p {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.5;
+  }
+
+  /* ─── IMPACTO ───────────────────────────── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .impact-item {
+    padding: 22px;
+    border-left: 2px solid var(--teal);
+    background: var(--bg-card);
+    border-radius: 0 10px 10px 0;
+  }
+
+  .impact-item p {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+
+  /* ─── MODALIDADES ───────────────────────── */
+  .modal-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .modal-tag {
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: var(--bg-card2);
+    border: 1px solid var(--border-v);
+    color: var(--text-sub);
+    transition: all 0.2s;
+  }
+  .modal-tag:hover { border-color: var(--violet); color: #C4B5FD; }
+
+  /* ─── DESTINATARIOS ─────────────────────── */
+  .dest-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  @media (max-width: 640px) {
+    .dest-split { grid-template-columns: 1fr; }
+  }
+
+  .dest-col h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+
+  .dest-list { list-style: none; }
+  .dest-list li {
+    font-size: 14px;
+    color: var(--text-sub);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .dest-list li:last-child { border-bottom: none; }
+
+  /* ─── FOOTER ────────────────────────────── */
+  footer {
+    background: var(--bg-deep);
+    border-top: 1px solid var(--border);
+    padding: 48px 6vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .footer-name {
+    font-family: 'Calibri', 'Arial', 'Helvetica Neue', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  .footer-sub {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* ─── DIVIDER RULE ──────────────────────── */
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 6vw;
+  }
+
+  /* ─── SECTION ALTERNATE BG ──────────────── */
+  .alt-bg { background: var(--bg-deep); }
+
+  @media (max-width: 600px) {
+    .hero-name { font-size: 42px; }
+    .contact-pill { font-size: 10px; padding: 6px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="year-badge">PORTAFOLIO DOCENTE · 2026</div>
+
+  <div class="hero-content">
+    <div class="eyebrow">Biología Molecular &amp; Microbiología Aplicada</div>
+
+    <h1 class="hero-name">
+      <span class="name-first">Gabriel</span>
+      <span class="name-last">Schumacher</span>
+    </h1>
+    <p class="hero-degree">Biólogo · M.Sc. Microbiología</p>
+
+    <p class="hero-tagline">
+      Formación en ciencias de la salud con enfoque en pensamiento sistémico — integrando niveles molecular, celular, clínico y poblacional en una comprensión coherente y aplicable.
+    </p>
+
+    <div class="hero-contact">
+      <a class="contact-pill" href="mailto:schumacherzen@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        schumacherzen@gmail.com
+      </a>
+      <a class="contact-pill" href="tel:+56982189304">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 13.73 19.79 19.79 0 0 1 1 5.1 2 2 0 0 1 2.98 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 18l.92 1.92z"/></svg>
+        +56 9 82189304
+      </a>
+      <a class="contact-pill" href="https://www.linkedin.com/in/gabrielschumacherbiologist" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin/gabrielschumacherbiologist
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="fade-divider"></div>
+
+<!-- ═══ MAIN ════════════════════════════════════════════════════ -->
+<main>
+
+  <!-- ── PERFIL ─────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">01 — Perfil</div>
+    <h2 class="section-title">Docente Especializado en<br>Ciencias Biomédicas</h2>
+    <div class="valor-grid">
+      <div class="valor-card">
+        <div class="valor-icon">🧬</div>
+        <h3>Biología Molecular</h3>
+        <p>Expresión génica, regulación, mutaciones y bases moleculares de patologías humanas con aplicación clínica directa.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-icon">🦠</div>
+        <h3>Microbiología Aplicada</h3>
+        <p>Patogénesis microbiana, interacciones huésped–patógeno y resistencia antimicrobiana en contextos clínicos reales.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-icon">🔗</div>
+        <h3>Pensamiento Sistémico</h3>
+        <p>Integración conceptual entre niveles biológicos para desarrollar razonamiento clínico no lineal y robusto.</p>
+      </div>
+      <div class="valor-card">
+        <div class="valor-icon">🎓</div>
+        <h3>Formación en Salud</h3>
+        <p>Metodologías activas (PBL, casos clínicos) orientadas a reducir la fragmentación del conocimiento en ciencias básicas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ── PROPUESTA DE VALOR ─────────────────────────────────── -->
+  <div class="section alt-bg">
+    <div class="section-label">02 — Propuesta de Valor</div>
+    <h2 class="section-title">Integración Sistémica en<br>Ciencias Biomédicas</h2>
+
+    <p style="color: var(--text-sub); max-width: 620px; margin-bottom: 36px; font-size: 15px; line-height: 1.8;">
+      Uno de los desafíos centrales en la formación de profesionales de la salud es la fragmentación del conocimiento entre niveles. El pensamiento sistémico actúa como herramienta pedagógica transversal que conecta:
+    </p>
+
+    <div class="levels-row">
+      <span class="level-chip mol">Molecular</span>
+      <span class="level-chip cel">Celular</span>
+      <span class="level-chip org">Orgánico</span>
+      <span class="level-chip cli">Clínico</span>
+      <span class="level-chip pob">Poblacional</span>
+    </div>
+
+    <div class="impact-grid">
+      <div class="impact-item"><p>Comprender relaciones entre niveles biológicos interdependientes</p></div>
+      <div class="impact-item"><p>Analizar causas múltiples en procesos patológicos complejos</p></div>
+      <div class="impact-item"><p>Integrar mecanismos moleculares con manifestaciones clínicas observables</p></div>
+      <div class="impact-item"><p>Desarrollar razonamiento clínico más robusto y adaptativo</p></div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ── COLABORACIÓN DOCENTE ───────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">03 — Áreas de Colaboración</div>
+    <h2 class="section-title">Modalidades de<br>Docencia</h2>
+    <div class="colab-grid">
+
+      <div class="colab-card">
+        <div class="colab-header">
+          <div class="colab-letter">A</div>
+          <div class="colab-header-text">
+            <h3>Módulos Teóricos</h3>
+            <span>Clases · Co-docencia</span>
+          </div>
+        </div>
+        <div class="colab-body">
+          <ul class="colab-topics">
+            <li>Expresión génica y regulación</li>
+            <li>Mutaciones y enfermedades complejas</li>
+            <li>Patogénesis microbiana</li>
+            <li>Resistencia antimicrobiana</li>
+            <li>Interacciones huésped–patógeno</li>
+          </ul>
+          <div class="colab-systemic">Integración de retroalimentaciones biológicas y redes de regulación no lineales</div>
+        </div>
+      </div>
+
+      <div class="colab-card">
+        <div class="colab-header">
+          <div class="colab-letter">B</div>
+          <div class="colab-header-text">
+            <h3>Laboratorios Prácticos</h3>
+            <span>Docencia supervisada · Casos experimentales</span>
+          </div>
+        </div>
+        <div class="colab-body">
+          <ul class="colab-topics">
+            <li>PCR e interpretación de resultados</li>
+            <li>Electroforesis y análisis de bandas</li>
+            <li>Tinción de Gram · Identificación microbiana</li>
+            <li>Interpretación de antibiogramas</li>
+            <li>Casos de mutaciones genéticas</li>
+          </ul>
+          <div class="colab-systemic">Vinculación entre datos experimentales y decisiones clínicas reales</div>
+        </div>
+      </div>
+
+      <div class="colab-card">
+        <div class="colab-header">
+          <div class="colab-letter">C</div>
+          <div class="colab-header-text">
+            <h3>Seminarios Académicos</h3>
+            <span>Artículos científicos · Análisis crítico</span>
+          </div>
+        </div>
+        <div class="colab-body">
+          <ul class="colab-topics">
+            <li>Resistencia antimicrobiana (AMR)</li>
+            <li>Microbiota y salud humana</li>
+            <li>Biología molecular del cáncer</li>
+            <li>Innovaciones en diagnóstico molecular</li>
+          </ul>
+          <div class="colab-systemic">Análisis de fenómenos biológicos como sistemas dinámicos emergentes</div>
+        </div>
+      </div>
+
+      <div class="colab-card">
+        <div class="colab-header">
+          <div class="colab-letter">D</div>
+          <div class="colab-header-text">
+            <h3>Talleres Prácticos</h3>
+            <span>Casos clínicos · Trabajo colaborativo</span>
+          </div>
+        </div>
+        <div class="colab-body">
+          <ul class="colab-topics">
+            <li>Interpretación de mutaciones en enfermedades</li>
+            <li>Diagnóstico microbiológico por casos</li>
+            <li>Interpretación de patrones de resistencia</li>
+            <li>Análisis de brotes infecciosos</li>
+            <li>Evaluación de escenarios clínicos complejos</li>
+          </ul>
+          <div class="colab-systemic">Resolución de problemas no lineales con múltiples variables biológicas</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ── METODOLOGÍA ────────────────────────────────────────── -->
+  <div class="section alt-bg method-section">
+    <div class="section-label">04 — Metodología</div>
+    <h2 class="section-title">Enfoque Pedagógico</h2>
+    <div class="method-list">
+      <div class="method-item">
+        <div class="method-dot"></div>
+        <p>Aprendizaje Basado en Problemas (PBL) aplicado a ciencias biomédicas</p>
+      </div>
+      <div class="method-item">
+        <div class="method-dot"></div>
+        <p>Aprendizaje basado en casos clínicos reales y simulados</p>
+      </div>
+      <div class="method-item">
+        <div class="method-dot"></div>
+        <p>Integración de pensamiento sistémico como herramienta transversal</p>
+      </div>
+      <div class="method-item">
+        <div class="method-dot"></div>
+        <p>Discusión guiada de evidencia científica actualizada</p>
+      </div>
+      <div class="method-item">
+        <div class="method-dot"></div>
+        <p>Resolución de problemas biomédicos complejos en equipo</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ── IMPACTO ─────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">05 — Impacto</div>
+    <h2 class="section-title">Impacto en Formación<br>en Salud</h2>
+    <div class="impact-grid">
+      <div class="impact-item"><p>Comprensión integrada de procesos biológicos en lugar de aprendizaje fragmentado</p></div>
+      <div class="impact-item"><p>Fortalecimiento del razonamiento clínico en etapas tempranas de la formación</p></div>
+      <div class="impact-item"><p>Preparación para sistemas de salud complejos, dinámicos e inciertos</p></div>
+      <div class="impact-item"><p>Desarrollo de capacidad analítica en escenarios de incertidumbre biomédica</p></div>
+      <div class="impact-item"><p>Transición desde memorización hacia razonamiento integrador y adaptativo</p></div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ── MODALIDADES ────────────────────────────────────────── -->
+  <div class="section alt-bg">
+    <div class="section-label">06 — Formas de Colaboración</div>
+    <h2 class="section-title">Modalidades de<br>Participación</h2>
+    <div class="modal-row">
+      <span class="modal-tag">Co-docencia en asignaturas</span>
+      <span class="modal-tag">Módulos específicos</span>
+      <span class="modal-tag">Laboratorios prácticos supervisados</span>
+      <span class="modal-tag">Seminarios temáticos</span>
+      <span class="modal-tag">Talleres de aplicación clínica</span>
+      <span class="modal-tag">Actividades de integración biomédica</span>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ── DESTINATARIOS ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">07 — Destinatarios</div>
+    <h2 class="section-title">Instituciones y<br>Perfiles de Contacto</h2>
+    <div class="dest-split">
+      <div class="dest-col">
+        <h3>Perfiles de contacto</h3>
+        <ul class="dest-list">
+          <li>Directores de carrera</li>
+          <li>Coordinadores de asignaturas</li>
+          <li>Jefaturas de ciencias básicas</li>
+          <li>Direcciones de docencia</li>
+        </ul>
+      </div>
+      <div class="dest-col">
+        <h3>Instituciones objetivo</h3>
+        <ul class="dest-list">
+          <li>Universidad San Sebastián</li>
+          <li>Universidad Mayor</li>
+          <li>Universidad Andrés Bello</li>
+          <li>Universidad de los Andes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════ -->
+<footer>
+  <div>
+    <div class="footer-name">Gabriel Schumacher</div>
+    <div class="footer-sub">Biólogo · M.Sc. Microbiología · Portafolio Docente 2026</div>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:schumacherzen@gmail.com">schumacherzen@gmail.com</a>
+    <a href="tel:+56982189304">+56 9 82189304</a>
+    <a href="https://www.linkedin.com/in/gabrielschumacherbiologist" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
